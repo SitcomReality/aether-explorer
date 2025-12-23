@@ -1,6 +1,6 @@
 export class DialogueManager {
   constructor() {
-    this.queue = [];
+    this.messages = [];
     this.current = null;
     this.displayTime = 0;
     
@@ -11,19 +11,19 @@ export class DialogueManager {
   }
   
   queue(messages) {
-    this.queue.push(...messages);
+    this.messages.push(...messages);
     if (!this.current) {
       this.showNext();
     }
   }
   
   showNext() {
-    if (this.queue.length === 0) {
+    if (this.messages.length === 0) {
       this.hide();
       return;
     }
     
-    this.current = this.queue.shift();
+    this.current = this.messages.shift();
     this.displayTime = 0;
     
     this.nameEl.textContent = this.current.character;
